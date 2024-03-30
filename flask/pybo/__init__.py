@@ -8,6 +8,10 @@ CORS(app)
 
 number = 0
 
+@app.route('/video')
+def video():
+    return send_file()'video'
+
 @app.route('/')
 def index():
     global number

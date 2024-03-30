@@ -32,6 +32,7 @@ export default {
       }
     },
     startPolling() {
+      this.cors_test();
       this.pollingInterval = setInterval(() => {
         this.cors_test();
       }, 5000);
