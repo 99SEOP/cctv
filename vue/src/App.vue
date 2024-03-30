@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <div>
-    <button @click="cors_test()">cors_test button</button>
+    <button @click="startPolling()">cors_test button</button>
   </div>
   <div>
     <p>
@@ -30,6 +30,20 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    startPolling() {
+      this.pollingInterval = setInterval(() => {
+        this.cors_test();
+      }, 5000);
+    },
+    stopPolling() {
+      clearInterval(this.pollingInterval);
+    },
+    created() {
+      this.startPolling();
+    },
+    beforeDestroy() {
+      this.stopPolling();
     },
   },
 };

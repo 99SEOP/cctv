@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, redirect, url_for
 from flask_cors import CORS
+from time import time
 
 app = Flask(__name__)
 
@@ -15,8 +16,9 @@ def index():
 
 @app.route('/api/data', methods=['GET', 'POST'])
 def api_data():
+    time = int(time())
     if request.method == 'GET':
-        return jsonify(message="GET request received, CORS is enabled!")
+        return jsonify(time)
 
     elif request.method == 'POST':
         # Accessing POST data
