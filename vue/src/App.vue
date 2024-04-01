@@ -26,7 +26,6 @@ export default {
   beforeDestroy() {
     this.stopPolling();
   },
-  components: {},
   methods: {
     async video_test() {
       try {

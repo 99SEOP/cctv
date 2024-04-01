@@ -150,12 +150,6 @@ def GenerateFrames():
         else:
             cap.release()
             cv2.destroyAllWindows()
-
-            print("Car count - Up:", car_count_up)
-            print("Car count - Down:", car_count_down)
-            print("Car count - Left:", car_count_left)
-            print("Car count - Right:", car_count_right)
-
             break
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
