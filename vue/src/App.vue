@@ -1,7 +1,7 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <div>
-    <button @click="startPolling()">cors_test button</button>
+    <button @click="video_test()">video_test button</button>
+    <button @click="cors_test()">cors_test button</button>
   </div>
   <div>
     <p>
@@ -22,10 +22,17 @@ export default {
   },
   components: {},
   methods: {
+    async video_test() {
+      try {
+        const response = await axios.get("http://localhost:5000/video");
+        this.msg = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async cors_test() {
       try {
-        const response = await axios.get("http://localhost:5000/numPlus");
-        console.log(response);
+        const response = await axios.get("http://localhost:5000/api/data");
         this.msg = response.data;
       } catch (error) {
         console.error(error);
