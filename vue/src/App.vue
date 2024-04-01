@@ -1,15 +1,14 @@
 <template>
   <div>
-    <button @click="video_test()">video_test button</button>
-    <button @click="cors_test()">cors_test button</button>
-  </div>
-  <div>
-    <p>
-      {{ msg }}
-    </p>
+    <h1>영상 프레임</h1>
+    <div v-if="videoFrames">
+      <img :src="videoFrames" alt="Video Frame" />
+    </div>
+    <div v-else>
+      <p>Loading...</p>
+    </div>
   </div>
 </template>
-
 <script>
 import axios from "axios";
 
@@ -17,15 +16,20 @@ export default {
   name: "App",
   data: () => {
     return {
-      msg: "Welcome to Your Vue.js App",
+      msg: "",
+      videoFrames: null,
     };
+  },
+  mounted() {
+    this.video_test();
+    this.startPolling();
   },
   components: {},
   methods: {
     async video_test() {
       try {
         const response = await axios.get("http://localhost:5000/video");
-        this.msg = response.data;
+        this.videoFrames = response.data;
       } catch (error) {
         console.error(error);
       }
@@ -39,9 +43,8 @@ export default {
       }
     },
     startPolling() {
-      this.cors_test();
       this.pollingInterval = setInterval(() => {
-        this.cors_test();
+        this.video_test();
       }, 5000);
     },
     stopPolling() {
@@ -56,14 +59,4 @@ export default {
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
