@@ -167,13 +167,7 @@ CORS(app)
 
 @app.route('/')
 def index():
-    global number
-    return jsonify({'number' : number})
-    
-
-@app.route('/api/data', methods=['GET'])
-def api_data():
-    return jsonify(message="GET request received, CORS is enabled!")
+    return
 
 @app.route('/video', methods=['GET'])
 def stream():

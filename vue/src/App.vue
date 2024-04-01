@@ -20,9 +20,11 @@ export default {
       videoFrames: null,
     };
   },
-  mounted() {
-    this.video_test();
+  created() {
     this.startPolling();
+  },
+  beforeDestroy() {
+    this.stopPolling();
   },
   components: {},
   methods: {
@@ -34,9 +36,9 @@ export default {
         console.error(error);
       }
     },
-    async cors_test() {
+    async stats_test() {
       try {
-        const response = await axios.get("http://localhost:5000/api/data");
+        const response = await axios.get("http://localhost:5000/statistics");
         this.msg = response.data;
       } catch (error) {
         console.error(error);
@@ -49,12 +51,6 @@ export default {
     },
     stopPolling() {
       clearInterval(this.pollingInterval);
-    },
-    created() {
-      this.startPolling();
-    },
-    beforeDestroy() {
-      this.stopPolling();
     },
   },
 };
