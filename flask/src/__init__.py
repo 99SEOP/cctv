@@ -23,7 +23,6 @@ car_count_down = 0
 car_count_left = 0
 car_count_right = 0
 
-
 # 길이계산
 def calculate_length(points):
     total_length = 0
@@ -47,9 +46,7 @@ crossed_car_ids = set()
 def GenerateFrames():
     while cap.isOpened():
         success, frame = cap.read() 
-        if success:  
-            success, buffer = cv2.imencode('.jpg', frame) 
-            frame = buffer.tobytes() 
+        if success:
             
             results = model.track(
                 frame, persist=True, verbose=False, tracker="bytetrack.yaml"
@@ -105,45 +102,6 @@ def GenerateFrames():
                                     car_count_down += 1
                                 elif dy < 0:  # up
                                     car_count_up += 1
-            cv2.putText(
-                annotated_frame,
-                f"Up: {car_count_up}",
-                (10, 50),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                1,
-                (0, 255, 0),
-                2,
-            )
-            cv2.putText(
-                annotated_frame,
-                f"Down: {car_count_down}",
-                (200, 50),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                1,
-                (0, 255, 0),
-                2,
-            )
-            cv2.putText(
-                annotated_frame,
-                f"Left: {car_count_left}",
-                (10, 100),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                1,
-                (0, 255, 0),
-                2,
-            )
-            cv2.putText(
-                annotated_frame,
-                f"Right: {car_count_right}",
-                (200, 100),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                1,
-                (0, 255, 0),
-                2,
-            )
-            
-            success, buffer = cv2.imencode('.jpg', frame)  # JPEG 형식으로 이미지를 인코딩
-            frame = buffer.tobytes()
             # q눌러서 종료
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
@@ -151,6 +109,9 @@ def GenerateFrames():
             cap.release()
             cv2.destroyAllWindows()
             break
+        
+        ret, buffer = cv2.imencode('.jpg', annotated_frame)
+        frame = buffer.tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
