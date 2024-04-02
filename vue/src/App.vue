@@ -2,7 +2,7 @@
   <div>
     <h1>영상 테스트</h1>
     <div v-if="videoFrames">
-      <img :src="videoFrames" alt="Video Frame" />
+      <img :src="videoFrames" />
     </div>
     <div v-else>
       <p>Loading...</p>

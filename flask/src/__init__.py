@@ -17,12 +17,6 @@ LINE2_END = (720, 350)
 # 길이 임계값
 THRESHOLD_LENGTH = 50
 
-# 방향별 카운트
-car_count_up = 0
-car_count_down = 0
-car_count_left = 0
-car_count_right = 0
-
 # 길이계산
 def calculate_length(points):
     total_length = 0
@@ -42,8 +36,15 @@ track_history = defaultdict(lambda: [])
 # Set of car IDs that crossed the line
 crossed_car_ids = set()
 
+# 방향별 카운트
+car_count_up = 0
+car_count_down = 0
+car_count_left = 0
+car_count_right = 0
+
 
 def GenerateFrames():
+    global car_count_up, car_count_down, car_count_left, car_count_right
     while cap.isOpened():
         success, frame = cap.read() 
         if success:
