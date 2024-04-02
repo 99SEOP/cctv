@@ -1,12 +1,11 @@
 <template>
   <div>
     <h1>영상 테스트</h1>
-    <div v-if="videoFrames">
-      <img :src="videoFrames" />
-    </div>
-    <div v-else>
-      <p>Loading...</p>
-    </div>
+    <iframe src="http://localhost:5000/video" width="720" height="480" />
+  </div>
+  <div>
+    <h1>통계 테스트</h1>
+    <p>{{ msg }}</p>
   </div>
 </template>
 <script>
@@ -16,6 +15,7 @@ export default {
   name: "App",
   data: () => {
     return {
+      msg: "통신 실패",
       videoFrames: null,
     };
   },
@@ -26,25 +26,19 @@ export default {
     this.stopPolling();
   },
   methods: {
-    async video_test() {
+    async stats_test() {
       try {
-        const response = await axios.get("http://localhost:5000/video");
-        this.videoFrames = response.data;
+        const response = await axios.get("http://localhost:5000/statistics");
+        if (response) {
+          this.msg = response.data;
+        }
       } catch (error) {
         console.error(error);
       }
     },
-    /*async stats_test() {
-      try {
-        const response = await axios.get("http://localhost:5000/statistics");
-        this.msg = response.data;
-      } catch (error) {
-        console.error(error);
-      }
-    },*/
     startPolling() {
       this.pollingInterval = setInterval(() => {
-        this.video_test();
+        this.stats_test();
       }, 1000);
     },
     stopPolling() {

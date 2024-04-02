@@ -131,6 +131,7 @@ def stream():
 
 @app.route('/statistics', methods=['GET'])
 def car_statistics():
+    global car_count_up, car_count_down, car_count_left, car_count_right
     return jsonify(
         {
             "car_count_up": car_count_up,
