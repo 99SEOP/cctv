@@ -4,8 +4,10 @@
     <iframe src="http://localhost:5000/video" width="720" height="480" />
   </div>
   <div>
-    <h1>통계 테스트</h1>
-    <p>{{ msg }}</p>
+    <p>car_up : {{ msg.car_count_up }}</p>
+    <p>car_down : {{ msg.car_count_down }}</p>
+    <p>car_left : {{ msg.car_count_left }}</p>
+    <p>car_right : {{ msg.car_count_right }}</p>
   </div>
 </template>
 <script>
