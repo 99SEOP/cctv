@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>영상 테스트</h1>
     <iframe src="http://localhost:5000/video" width="720" height="480" />
   </div>
   <div>
