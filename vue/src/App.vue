@@ -1,26 +1,22 @@
 <template>
-  <body
-    topmargin="0"
-    bottommargin="0"
-    leftmargin="0"
-    rightmargin="0"
-    style="background-color: #f6f6f6"
-  >
-    <div class="menu">
-      <nav class="clearfix">
-        <ul class="clearfix"></ul>
-        <a id="pull" href="#"></a>
-      </nav>
+  <body>
+    <div class="top">
+      <img src="./assets/cwnu_logo.png" height="50" />
     </div>
   </body>
-  <div>
+  <body>
+    <div class="menu"></div>
+  </body>
+  <div class="video">
     <iframe src="http://localhost:5000/video" width="720" height="480" />
   </div>
-  <div>
-    <p>car_up : {{ msg.car_count_up }}</p>
-    <p>car_down : {{ msg.car_count_down }}</p>
-    <p>car_left : {{ msg.car_count_left }}</p>
-    <p>car_right : {{ msg.car_count_right }}</p>
+  <div class="container">
+    <div class="countingData">
+      <p>car_up : {{ msg.car_count_up }}</p>
+      <p>car_down : {{ msg.car_count_down }}</p>
+      <p>car_left : {{ msg.car_count_left }}</p>
+      <p>car_right : {{ msg.car_count_right }}</p>
+    </div>
   </div>
 </template>
 <script>
@@ -63,70 +59,34 @@ export default {
 };
 </script>
 <style>
-nav {
-  font-size: 12pt;
-  font-family: "PT Sans", Arial, Sans-serif;
-  position: relative;
-}
-nav ul {
-  padding: 0;
-  margin: 0 auto;
-  width: auto;
-}
-nav a {
-  line-height: 50px;
-  height: 50px;
-}
-nav li a {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-}
-nav li:last-child a {
-  border-right: 0;
-}
-nav a#pull {
-  display: none;
-}
-html {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-ul {
-  /*list-style-type: none;*/
-  margin: 0;
-  padding: 0;
-  background-color: #333;
-  text-align: center;
-}
-li {
-  /*position: relative;*/
-  display: inline-block;
-}
-li a {
-  color: #ffffff;
-  text-align: center;
-  padding: 14.5px 16px;
-  text-decoration: none;
-}
-li a:hover {
-  color: #ffd400;
-  font-weight: normal;
-}
 .menu {
   width: 100%;
-  height: 50px;
-  text-align: center;
-  max-width: 100%;
+  height: 65px;
   background-position: center;
   background-size: cover;
-  background-color: #333333;
+  background-color: #134b8e;
   color: white;
   position: absolute;
-  top: 0;
   left: 0;
-  z-index: 1;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.video {
+  margin: 5px auto;
+  padding-top: 100px;
+  text-align: center;
+}
+.container {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  width: 720px;
+  height: 480px;
+  border: 1px solid black; /* 디버깅을 위한 가시적인 테두리 추가 */
+}
+.countingData {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+  text-align: center;
 }
 </style>
