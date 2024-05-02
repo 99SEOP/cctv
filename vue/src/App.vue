@@ -17,6 +17,14 @@
       <p>car_left : {{ msg.car_count_left }}</p>
       <p>car_right : {{ msg.car_count_right }}</p>
     </div>
+    <div class="spacer"></div>
+    <div class="timeData">
+      <p>
+        측정 시작 시간 :
+        <span id="measurement_start_time"></span>
+      </p>
+      <p>측정 시간 :30:50</p>
+    </div>
   </div>
 </template>
 <script>
@@ -81,12 +89,24 @@ export default {
   transform: translate(-50%);
   width: 720px;
   height: 480px;
-  border: 1px solid black; /* 디버깅을 위한 가시적인 테두리 추가 */
+  border: 1px solid black; /* 디버깅을 위한 가시적인 테두리 */
+  display: flex;
+  justify-content: space-between;
+}
+.spacer {
+  flex-grow: 1; /* 빈 요소가 나머지 공간을 모두 차지하도록 합니다. */
 }
 .countingData {
   font-family: arial;
   font-size: 24px;
   margin: 25px;
-  text-align: center;
+}
+.timeData {
+  font-family: arial;
+  font-size: 24px;
+  margin: 25px;
+}
+#measurement_start_time::before {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"; /* 8자리의 공백 생성 */
 }
 </style>
