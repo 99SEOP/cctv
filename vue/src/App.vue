@@ -87,9 +87,9 @@ export default {
   width: 720px;
   height: 480px;
   /* border: 1px solid black; 디버깅을 위한 가시적인 테두리 */
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
-  background-color: #f2f2f2c7;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
 }
