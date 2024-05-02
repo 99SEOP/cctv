@@ -19,11 +19,8 @@
     </div>
     <div class="spacer"></div>
     <div class="timeData">
-      <p>
-        측정 시작 시간 :
-        <span id="measurement_start_time"></span>
-      </p>
-      <p>측정 시간 :30:50</p>
+      <p>측정 시작 시간 :</p>
+      <p>측정 시간 :</p>
     </div>
   </div>
 </template>
@@ -105,8 +102,5 @@ export default {
   font-family: arial;
   font-size: 24px;
   margin: 25px;
-}
-#measurement_start_time::before {
-  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0"; /* 8자리의 공백 생성 */
 }
 </style>
