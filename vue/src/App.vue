@@ -86,12 +86,15 @@ export default {
   transform: translate(-50%);
   width: 720px;
   height: 480px;
-  border: 1px solid black; /* 디버깅을 위한 가시적인 테두리 */
+  /* border: 1px solid black; 디버깅을 위한 가시적인 테두리 */
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: #f2f2f2c7;
   display: flex;
   justify-content: space-between;
 }
 .spacer {
-  flex-grow: 1; /* 빈 요소가 나머지 공간을 모두 차지하도록 합니다. */
+  flex-grow: 1;
 }
 .countingData {
   font-family: arial;
