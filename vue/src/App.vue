@@ -12,7 +12,7 @@
       <iframe src="http://localhost:5000/video" width="720" height="480" />
     </div>
     <div class="container">
-      <div class="data">
+      <div class="textData">
         <p>car_up : {{ msg.car_count_up }}</p>
         <p>car_down : {{ msg.car_count_down }}</p>
         <p>car_left : {{ msg.car_count_left }}</p>
@@ -85,8 +85,7 @@ export default {
 }
 .container {
   position: fixed;
-  left: 50%;
-  transform: translate(-50%);
+  left: 35%;
   width: 720px;
   height: 480px;
   /* border: 1px solid black; 디버깅을 위한 가시적인 테두리 */
@@ -94,7 +93,6 @@ export default {
   border-radius: 15px;
   background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
   font-family: arial;
   margin-top: 100px;
   margin-left: 300px;
@@ -102,7 +100,7 @@ export default {
 .spacer {
   flex-grow: 1;
 }
-.data {
+.textData {
   font-family: arial;
   font-size: 20px;
   margin: 25px;
