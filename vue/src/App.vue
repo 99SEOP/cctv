@@ -12,7 +12,7 @@
       <iframe src="http://localhost:5000/video" width="720" height="480" />
     </div>
     <div class="container">
-      <div class="countingData">
+      <div class="data">
         <p>car_up : {{ msg.car_count_up }}</p>
         <p>car_down : {{ msg.car_count_down }}</p>
         <p>car_left : {{ msg.car_count_left }}</p>
@@ -84,7 +84,6 @@ export default {
   text-align: center;
 }
 .container {
-  float: left;
   position: fixed;
   left: 50%;
   transform: translate(-50%);
@@ -97,21 +96,15 @@ export default {
   display: flex;
   justify-content: space-between;
   font-family: arial;
-  font-size: 24px;
   margin-top: 100px;
   margin-left: 300px;
 }
 .spacer {
   flex-grow: 1;
 }
-.countingData {
+.data {
   font-family: arial;
-  font-size: 24px;
-  margin: 25px;
-}
-.timeData {
-  font-family: arial;
-  font-size: 24px;
+  font-size: 20px;
   margin: 25px;
 }
 </style>
