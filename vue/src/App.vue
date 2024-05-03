@@ -7,22 +7,22 @@
   <body>
     <div class="menu"></div>
   </body>
-  <div class="video">
-    <iframe src="http://localhost:5000/video" width="720" height="480" />
-  </div>
-  <div class="container">
-    <div class="countingData">
-      <p>car_up : {{ msg.car_count_up }}</p>
-      <p>car_down : {{ msg.car_count_down }}</p>
-      <p>car_left : {{ msg.car_count_left }}</p>
-      <p>car_right : {{ msg.car_count_right }}</p>
+  <body class="dataArea">
+    <div class="video">
+      <iframe src="http://localhost:5000/video" width="720" height="480" />
     </div>
-    <div class="spacer"></div>
-    <div class="timeData">
-      <p>측정 시작 시간 :</p>
-      <p>측정 시간 :</p>
+    <div class="container">
+      <div class="countingData">
+        <p>car_up : {{ msg.car_count_up }}</p>
+        <p>car_down : {{ msg.car_count_down }}</p>
+        <p>car_left : {{ msg.car_count_left }}</p>
+        <p>car_right : {{ msg.car_count_right }}</p>
+        <br />
+        <p>측정 시작 시간 :</p>
+        <p>측정 시간 :</p>
+      </div>
     </div>
-  </div>
+  </body>
 </template>
 <script>
 import axios from "axios";
@@ -75,12 +75,16 @@ export default {
   left: 0;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
 }
+.dataArea {
+  margin: 10px auto;
+}
 .video {
-  margin: 5px auto;
-  padding-top: 100px;
+  margin: 100px;
+  float: left;
   text-align: center;
 }
 .container {
+  float: left;
   position: fixed;
   left: 50%;
   transform: translate(-50%);
@@ -92,6 +96,10 @@ export default {
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
+  font-family: arial;
+  font-size: 24px;
+  margin-top: 100px;
+  margin-left: 300px;
 }
 .spacer {
   flex-grow: 1;
