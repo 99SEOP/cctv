@@ -30,11 +30,11 @@
       </p>
       <br />
       <p>
-        <span>시작시각</span> :
+        <span>측정 시작 시각</span> :
         <span class="data-left-align">{{ this.timeString }}</span>
       </p>
       <p>
-        <span>측정시간</span> :
+        <span>총 측정 시간</span> :
         <span class="data-left-align">{{ this.onGoingString }}</span>
       </p>
     </div>
