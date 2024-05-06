@@ -155,8 +155,8 @@ export default {
   height: 480px;
   border-radius: 15px;
   background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   display: flex;
 }
 .textData {
