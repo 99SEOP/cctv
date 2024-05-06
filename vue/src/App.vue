@@ -79,9 +79,9 @@ export default {
 
       this.timeString =
         year +
-        "-" +
+        "/" +
         month +
-        "-" +
+        "/" +
         day +
         " " +
         hours +
@@ -139,6 +139,6 @@ p {
 }
 p span {
   flex: 1; /* 텍스트의 너비를 균일하게 만들기 위해 사용 */
-  margin-right: 15px;
+  margin-right: 25px;
 }
 </style>
