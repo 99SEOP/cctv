@@ -12,13 +12,31 @@
   </div>
   <div class="container">
     <div class="textData">
-      <p><span>Upward</span> : {{ msg.car_count_up }}</p>
-      <p><span>Downward</span> : {{ msg.car_count_down }}</p>
-      <p><span>Leftward</span> : {{ msg.car_count_left }}</p>
-      <p><span>Rightward</span> : {{ msg.car_count_right }}</p>
+      <p>
+        <span>Upward</span> :
+        <span class="data-left-align">{{ msg.car_count_up }}</span>
+      </p>
+      <p>
+        <span>Downward</span> :
+        <span class="data-left-align">{{ msg.car_count_down }}</span>
+      </p>
+      <p>
+        <span>Leftward</span> :
+        <span class="data-left-align">{{ msg.car_count_left }}</span>
+      </p>
+      <p>
+        <span>Rightward</span> :
+        <span class="data-left-align">{{ msg.car_count_right }}</span>
+      </p>
       <br />
-      <p><span>시작시각</span> : {{ this.timeString }}</p>
-      <p><span>측정시간</span> : {{ this.onGoingTime }}</p>
+      <p>
+        <span>시작시각</span> :
+        <span class="data-left-align">{{ this.timeString }}</span>
+      </p>
+      <p>
+        <span>측정시간</span> :
+        <span class="data-left-align">{{ this.onGoingString }}</span>
+      </p>
     </div>
   </div>
 </template>
@@ -33,6 +51,7 @@ export default {
       videoFrames: null,
       onGoingTime: 0,
       timeString: "",
+      onGoingString: "",
     };
   },
   created() {
@@ -57,6 +76,7 @@ export default {
       this.pollingInterval = setInterval(() => {
         this.stats_test();
         this.onGoingTime += 1;
+        this.updateCounter();
       }, 1000);
     },
     stopPolling() {
@@ -89,6 +109,17 @@ export default {
         minutes +
         ":" +
         seconds;
+    },
+    updateCounter() {
+      var hours = Math.floor(this.onGoingTime / 3600);
+      var minutes = Math.floor((this.onGoingTime % 3600) / 60);
+      var seconds = Math.floor(this.onGoingTime % 60);
+
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      this.onGoingString = hours + ":" + minutes + ":" + seconds;
     },
   },
 };
@@ -139,6 +170,10 @@ p {
 }
 p span {
   flex: 1; /* 텍스트의 너비를 균일하게 만들기 위해 사용 */
-  margin-right: 25px;
+  margin-right: 0px;
+}
+.data-left-align {
+  text-align: left;
+  margin-left: 30px;
 }
 </style>
