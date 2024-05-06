@@ -26,7 +26,7 @@ def calculate_length(points):
 
 
 # Load YOLOv8 model
-model = YOLO("car-cctv-6.pt")
+model = YOLO("148-epoch.pt")
 video_path = "video.mp4"
 cap = cv2.VideoCapture(video_path)
 
