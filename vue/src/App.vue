@@ -67,6 +67,7 @@ export default {
         const response = await axios.get("http://localhost:5000/statistics");
         if (response) {
           this.msg = response.data;
+          this.onGoingTime += 1;
         }
       } catch (error) {
         console.error(error);
@@ -75,7 +76,6 @@ export default {
     startPolling() {
       this.pollingInterval = setInterval(() => {
         this.stats_test();
-        this.onGoingTime += 1;
         this.updateCounter();
       }, 1000);
     },
