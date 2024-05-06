@@ -1,6 +1,6 @@
 <template>
   <body>
-    <div class="top">
+    <div>
       <img src="./assets/cwnu_logo.png" height="45" />
     </div>
   </body>
@@ -12,13 +12,13 @@
   </div>
   <div class="container">
     <div class="textData">
-      <p>car_up : {{ msg.car_count_up }}</p>
-      <p>car_down : {{ msg.car_count_down }}</p>
-      <p>car_left : {{ msg.car_count_left }}</p>
-      <p>car_right : {{ msg.car_count_right }}</p>
+      <p><span>Upward</span> : {{ msg.car_count_up }}</p>
+      <p><span>Downward</span> : {{ msg.car_count_down }}</p>
+      <p><span>Leftward</span> : {{ msg.car_count_left }}</p>
+      <p><span>Rightward</span> : {{ msg.car_count_right }}</p>
       <br />
-      <p>측정 시작 시간 :</p>
-      <p>측정 시간 :</p>
+      <p><span>시작시각</span> : {{ this.timeString }}</p>
+      <p><span>측정시간</span> : {{ this.onGoingTime }}</p>
     </div>
   </div>
 </template>
@@ -31,9 +31,12 @@ export default {
     return {
       msg: "통신 실패",
       videoFrames: null,
+      onGoingTime: 0,
+      timeString: "",
     };
   },
   created() {
+    this.gotClock();
     this.startPolling();
   },
   beforeUnmount() {
@@ -53,15 +56,50 @@ export default {
     startPolling() {
       this.pollingInterval = setInterval(() => {
         this.stats_test();
+        this.onGoingTime += 1;
       }, 1000);
     },
     stopPolling() {
       clearInterval(this.pollingInterval);
     },
+    gotClock() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth() + 1;
+      var day = now.getDate();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      month = month < 10 ? "0" + month : month;
+      day = day < 10 ? "0" + day : day;
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      this.timeString =
+        year +
+        "-" +
+        month +
+        "-" +
+        day +
+        " " +
+        hours +
+        ":" +
+        minutes +
+        ":" +
+        seconds;
+    },
   },
 };
 </script>
+
 <style>
+@font-face {
+  font-family: "Roboto", "Orbit";
+  src: url("./assets/fonts/Roboto/Roboto-Light.ttf"),
+    url("./assets/fonts/Orbit/Orbit-Regular.ttf");
+}
 .menu {
   width: 100%;
   height: 65px;
@@ -71,26 +109,36 @@ export default {
   color: white;
   position: absolute;
   left: 0;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
 }
 .video {
-  margin: 100px;
+  margin-top: 150px;
+  margin-left: 100px;
   float: left;
 }
 .container {
   position: fixed;
   left: 30%;
-  margin-top: 100px;
-  margin-left: 300px;
+  margin-top: 150px;
+  margin-left: 450px;
   width: 720px;
   height: 480px;
   border-radius: 15px;
   background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
   display: flex;
 }
 .textData {
-  font-family: arial;
+  font-family: Roboto;
   font-size: 20px;
-  margin: 25px;
+  margin: 45px;
+}
+p {
+  display: flex; /* 요소들을 수평으로 배열하기 위해 flexbox 사용 */
+  justify-content: space-between; /* 요소들 사이의 공간을 최대한 활용하여 정렬 */
+}
+p span {
+  flex: 1; /* 텍스트의 너비를 균일하게 만들기 위해 사용 */
+  margin-right: 15px;
 }
 </style>
