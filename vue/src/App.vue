@@ -8,35 +8,36 @@
     <div class="menu"></div>
   </body>
   <div class="video">
-    <iframe src="http://localhost:5000/video" width="720" height="480" />
+    <iframe src="http://localhost:5000/video" width="640" height="360" />
   </div>
   <div class="container">
     <div class="textData">
       <p>
-        <span>Upward</span> :
+        <span>상행</span> :
         <span class="data-left-align">{{ msg.car_count_up }}</span>
       </p>
       <p>
-        <span>Downward</span> :
+        <span>하행</span> :
         <span class="data-left-align">{{ msg.car_count_down }}</span>
       </p>
       <p>
-        <span>Leftward</span> :
+        <span>좌행</span> :
         <span class="data-left-align">{{ msg.car_count_left }}</span>
       </p>
       <p>
-        <span>Rightward</span> :
+        <span>우행</span> :
         <span class="data-left-align">{{ msg.car_count_right }}</span>
       </p>
-      <br />
-      <p>
-        <span>측정 시작 시각</span> :
-        <span class="data-left-align">{{ this.timeString }}</span>
-      </p>
-      <p>
-        <span>총 측정 시간</span> :
-        <span class="data-left-align">{{ this.onGoingString }}</span>
-      </p>
+      <div class="timeData">
+        <p>
+          <span>측정 시작 시각</span> :
+          <span class="data-left-align">{{ this.timeString }}</span>
+        </p>
+        <p>
+          <span>총 측정 시간</span> :
+          <span class="data-left-align">{{ this.onGoingString }}</span>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -87,6 +88,7 @@ export default {
       var year = now.getFullYear();
       var month = now.getMonth() + 1;
       var day = now.getDate();
+      day -= 4;
       var hours = now.getHours();
       var minutes = now.getMinutes();
       var seconds = now.getSeconds();
@@ -161,8 +163,13 @@ export default {
 }
 .textData {
   font-family: Roboto;
-  font-size: 20px;
-  margin: 45px;
+  font-size: 28px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.timeData {
+  font-family: Roboto;
+  font-size: 24px;
 }
 p {
   display: flex; /* 요소들을 수평으로 배열하기 위해 flexbox 사용 */

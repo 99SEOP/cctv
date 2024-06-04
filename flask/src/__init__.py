@@ -27,7 +27,7 @@ def calculate_length(points):
 
 # Load YOLOv8 model
 model = YOLO("148-epoch.pt")
-video_path = "video.mp4"
+video_path = "video-01.mp4"
 cap = cv2.VideoCapture(video_path)
 
 # Store the track history
